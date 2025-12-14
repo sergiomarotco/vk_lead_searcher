@@ -55,15 +55,21 @@ def main_generate_report() -> None:
     for wall_comment in wall_comments_array:
         report.append(f"{wall_comment['author_url']} оставил комментарий к посту на стене {wall_comment['post_url']}")
         unic_leads.append(wall_comment['author_url'])
+
+    # Записываем в файл активность лидов в группах
     result = list(dict.fromkeys(report))  # Удаление дубликатов
     result = sorted(result)
     with open(file_params.REPORT_FILE, "w", encoding="utf-8") as f:
         for item in result:
             f.write(f"{item}\n")
         print(f"{b.GREEN}Отчет сохранен в файл:{b.END} {b.BLUE}{file_params.REPORT_FILE}{b.END}")
+
+    # Записываем в файл уникальных пользователей
+    unic_users = list(dict.fromkeys(unic_leads))  # Удаление дубликатов
+    unic_users = sorted(unic_users)
     with open(file_params.REPORT_UNIC_USERS, "w", encoding="utf-8") as f:
-        for item in result:
-            f.write(f"{item}\n")
+        for unic_user in unic_users:
+            f.write(f"{unic_user}\n")
         print(f"{b.GREEN}Уникальные лиды сохранены в :{b.END} {b.BLUE}{file_params.REPORT_UNIC_USERS}{b.END}")
 
 if __name__ == "__main__":
