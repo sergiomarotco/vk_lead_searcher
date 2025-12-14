@@ -61,7 +61,7 @@ def main_generate_report() -> None:
         for item in result:
             f.write(f"{item}\n")
         print(f"{b.GREEN}Отчет сохранен в файл:{b.END} {b.BLUE}{file_params.REPORT_FILE}{b.END}")
-    with open(file_params.REPORT_FILE, "w", encoding="utf-8") as f:
+    with open(file_params.REPORT_UNIC_USERS, "w", encoding="utf-8") as f:
         for item in result:
             f.write(f"{item}\n")
         print(f"{b.GREEN}Уникальные лиды сохранены в :{b.END} {b.BLUE}{file_params.REPORT_UNIC_USERS}{b.END}")
